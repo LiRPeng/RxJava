@@ -60,7 +60,7 @@ apply plugin: "checkstyle"
 apply plugin: "jacoco"
 apply plugin: "ru.vyarus.animalsniffer"
 apply plugin: "maven"
-apply plugin: "me.champeau.gradle.jmh"
+//apply plugin: "me.champeau.gradle.jmh"
 apply plugin: "com.github.hierynomus.license"
 apply plugin: "com.jfrog.bintray"
 apply plugin: "com.jfrog.artifactory"
@@ -77,7 +77,7 @@ dependencies {
     signature "org.codehaus.mojo.signature:java16:1.1@signature"
 
     api "org.reactivestreams:reactive-streams:$reactiveStreamsVersion"
-    jmh "org.reactivestreams:reactive-streams:$reactiveStreamsVersion"
+//    jmh "org.reactivestreams:reactive-streams:$reactiveStreamsVersion"
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
@@ -210,23 +210,23 @@ publishing.publications.all {
   }
 }
 
-jmh {
-    jmhVersion = jmhLibVersion
-    humanOutputFile = null
-    includeTests = false
-    jvmArgs = ["-Djmh.ignoreLock=true"]
-    jvmArgsAppend = ["-Djmh.separateClasspathJAR=true"]
+//jmh {
+//    jmhVersion = jmhLibVersion
+//    humanOutputFile = null
+//    includeTests = false
+//    jvmArgs = ["-Djmh.ignoreLock=true"]
+//    jvmArgsAppend = ["-Djmh.separateClasspathJAR=true"]
+//
+//    if (project.hasProperty("jmh")) {
+//        include = ".*" + project.jmh + ".*"
+//        println("JMH: " + include);
+//    }
+//
+//}
 
-    if (project.hasProperty("jmh")) {
-        include = ".*" + project.jmh + ".*"
-        println("JMH: " + include);
-    }
-
-}
-
-plugins.withType(EclipsePlugin) {
-    project.eclipse.classpath.plusConfigurations += [ configurations.jmh ]
-}
+//plugins.withType(EclipsePlugin) {
+//    project.eclipse.classpath.plusConfigurations += [ configurations.jmh ]
+//}
 
 test {
     
